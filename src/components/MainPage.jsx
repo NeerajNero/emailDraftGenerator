@@ -1,11 +1,18 @@
 import React, { useState } from 'react'
 import subIssueData from '../emailData/emailData'
+import {useDispatch, useSelector} from 'react-redux'
+import { generateEmailDraft } from '../slices/emailDraftSlice'
+import Loader from './Loader'
 const MainPage = () => {
   const [subSection, setSubSection] = useState([])
   const [selectedSection, setSelectedSection] = useState("")
   const [selectedSubSection, setSubSelectedSection] = useState("")
   const [customerName, setCustomerName] = useState("")
   const [appName, setAppName] = useState("")
+
+  const emailDraftData = useSelector((state) => state?.emailDraft?.emailDraft)
+  const emailDraftDataStatus = useSelector((state) => state?.emailDraft?.status)
+  const dispatch = useDispatch()
   
   const handleDisplaySubSection = (e) => {
     setSubSection([])
@@ -19,6 +26,11 @@ const MainPage = () => {
   console.log(selectedSubSection)
   console.log(customerName)
   console.log(appName)
+  const handleGenerateEmail = (e) => {
+    e.preventDefault()
+    dispatch(generateEmailDraft({emailSectionName: selectedSection, emailSubSectionName: selectedSubSection, customerName, appName}))
+  }
+  console.log(emailDraftData)
   return (
     <main className='container mt-3'>
       <h3>Filter</h3>
@@ -45,10 +57,14 @@ const MainPage = () => {
           </div>}
           </div>
           <div className='d-flex mt-5'>
-              <span><label>Input Customer Name: </label><input type='text' value={customerName} onChange={(e) => setCustomerName(e.target.value)}/></span>
-              <span><label>Input App Name: </label><input type='text' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
+              <span><label className='mx-2'>Input Customer Name: </label><input type='text' value={customerName} onChange={(e) => setCustomerName(e.target.value)}/></span>
+              <span><label className='mx-2'>Input App Name: </label><input type='text' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
           </div>
-          <button className='btn btn-primary mt-3'>Generate Email</button>
+          <button className='btn btn-primary mt-3' onClick={handleGenerateEmail}>Generate Email</button>
+          <div className='my-5'>
+            {emailDraftDataStatus === "loading" && <Loader />}
+            {emailDraftData && <div><h4>Generated Email: </h4><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p><h4>Suggested Note</h4><p>{emailDraftData.suggestedNotes}</p></div>}
+          </div>
     </main>
   )
 }
