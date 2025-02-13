@@ -28,6 +28,9 @@ const MainPage = () => {
   console.log(appName)
   const handleGenerateEmail = (e) => {
     e.preventDefault()
+    if(!selectedSection || !selectedSubSection || !customerName || !appName){
+      return 
+    }
     dispatch(generateEmailDraft({emailSectionName: selectedSection, emailSubSectionName: selectedSubSection, customerName, appName}))
   }
   console.log(emailDraftData)
@@ -57,10 +60,12 @@ const MainPage = () => {
           </div>}
           </div>
           <div className='d-flex mt-5'>
-              <span><label className='mx-2'>Input Customer Name: </label><input type='text' value={customerName} onChange={(e) => setCustomerName(e.target.value)}/></span>
-              <span><label className='mx-2'>Input App Name: </label><input type='text' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
+              <span><label className='mx-2'>Input Customer Name: </label><input type='text' placeholder='Customer Name' value={customerName} onChange={(e) => setCustomerName(e.target.value)}/></span>
+              <span><label className='mx-2'>Input App Name: </label><input type='text' placeholder='App Name' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
           </div>
-          <button className='btn btn-primary mt-3' onClick={handleGenerateEmail}>Generate Email</button>
+          <button className='btn btn-primary mt-3' onClick={handleGenerateEmail}>{emailDraftDataStatus === "loading" ? <div class="spinner-border text-secondary" role="status" style={{height: "5px"}}>
+  <span class="visually-hidden">Loading...</span>
+</div> : "Generate Email"}</button>
           <div className='my-5'>
             {emailDraftDataStatus === "loading" && <Loader />}
             {emailDraftData && <div><h4>Generated Email: </h4><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p><h4>Suggested Note</h4><p>{emailDraftData.suggestedNotes}</p></div>}
