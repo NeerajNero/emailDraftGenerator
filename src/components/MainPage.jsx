@@ -28,6 +28,7 @@ const MainPage = () => {
   console.log(appName)
   const handleGenerateEmail = (e) => {
     e.preventDefault()
+
     if(!selectedSection || !selectedSubSection || !customerName || !appName){
       return 
     }
@@ -67,8 +68,8 @@ const MainPage = () => {
   <span class="visually-hidden">Loading...</span>
 </div> : "Generate Email"}</button>
           <div className='my-5'>
-            {emailDraftDataStatus === "loading" && <Loader />}
-            {emailDraftData && <div><h4>Generated Email: </h4><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p><h4>Suggested Note</h4><p>{emailDraftData.suggestedNotes}</p></div>}
+            {}
+            {emailDraftDataStatus === "loading" ? <Loader /> : emailDraftData && <div><h4>Generated Email: </h4><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p><h4>Suggested Note</h4><p>{emailDraftData.suggestedNotes}</p></div>}
           </div>
     </main>
   )
