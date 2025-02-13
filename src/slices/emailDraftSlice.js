@@ -8,7 +8,7 @@ const initialState = {
 }
 
 export const generateEmailDraft = createAsyncThunk('generateEmail', async ({emailSectionName,emailSubSectionName,customerName,appName}) => {
-    const response = await axios.post('http://localhost:5000/api/getEmailDraftWithName',{emailSectionName,emailSubSectionName,customerName,appName})
+    const response = await axios.post('https://email-draft-generator-backend.vercel.app/api/getEmailDraftWithName',{emailSectionName,emailSubSectionName,customerName,appName})
     console.log(response.data)
     return response.data
 })
