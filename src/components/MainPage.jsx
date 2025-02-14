@@ -34,7 +34,7 @@ const MainPage = () => {
     <main className='container mt-3'>
       <h3>Filter</h3>
       <div className='d-flex filterStyle'>
-      <div className='my-3 mx-3'>
+      <div className='my-3 me-3'>
         <select onChange={handleDisplaySubSection}>
           <option value="" autoFocus>Select Issue</option>
           <option value="Disbursement issues">Disbursement issues</option>
