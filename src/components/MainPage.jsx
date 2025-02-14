@@ -22,10 +22,6 @@ const MainPage = () => {
     setSubSection(findSubIssue[0][value])
     setSubSelectedSection(findSubIssue[0][value][0])
   }
-  console.log(selectedSection)
-  console.log(selectedSubSection)
-  console.log(customerName)
-  console.log(appName)
   const handleGenerateEmail = (e) => {
     e.preventDefault()
 
@@ -34,7 +30,6 @@ const MainPage = () => {
     }
     dispatch(generateEmailDraft({emailSectionName: selectedSection, emailSubSectionName: selectedSubSection, customerName, appName}))
   }
-  console.log(emailDraftData)
   return (
     <main className='container mt-3'>
       <h3>Filter</h3>
