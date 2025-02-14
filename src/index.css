@@ -53,4 +53,9 @@
       transform: translateY(0rem);
     }
   }
-  
+  @media screen and (max-width: 768px) {
+    .filterStyle{
+      display: flex;
+      flex-direction: column;
+    }
+  }

@@ -38,8 +38,8 @@ const MainPage = () => {
   return (
     <main className='container mt-3'>
       <h3>Filter</h3>
-      <div className='d-flex'>
-      <div>
+      <div className='d-flex filterStyle'>
+      <div className='my-3 mx-3'>
         <select onChange={handleDisplaySubSection}>
           <option value="" autoFocus>Select Issue</option>
           <option value="Disbursement issues">Disbursement issues</option>
@@ -54,15 +54,15 @@ const MainPage = () => {
           <option value="Harassment /fraud">Harassment /fraud</option>
         </select>
         </div>
-        {subSection.length > 0 && <div>
-          <select className='mx-3' onChange={(e) => setSubSelectedSection(e.target.value)}>
+        {subSection.length > 0 && <div className='mx-3 my-3'>
+          <select onChange={(e) => setSubSelectedSection(e.target.value)}>
             {subSection.map((sub,i) => <option key={i} value={sub}>{sub}</option>)}
           </select>
           </div>}
           </div>
-          <div className='d-flex mt-5'>
-              <span><label className='mx-2'>Input Customer Name: </label><input type='text' placeholder='Customer Name' value={customerName} onChange={(e) => setCustomerName(e.target.value)}/></span>
-              <span><label className='mx-2'>Input App Name: </label><input type='text' placeholder='App Name' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
+          <div className='d-flex mt-5 filterStyle'>
+              <span><label className='mx-2 my-3'>Input Customer Name: </label><input type='text' placeholder='Customer Name' value={customerName} onChange={(e) => setCustomerName(e.target.value)}/></span>
+              <span><label className='mx-2 my-3'>Input App Name: </label><input type='text' placeholder='App Name' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
           </div>
           <button className='btn btn-primary mt-3' onClick={handleGenerateEmail}>{emailDraftDataStatus === "loading" ? <div class="spinner-border text-secondary" role="status" style={{height: "5px"}}>
   <span class="visually-hidden">Loading...</span>
