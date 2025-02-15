@@ -56,8 +56,8 @@ const MainPage = () => {
           </div>}
           </div>
           <div className='d-flex mt-5 filterStyle'>
-              <span><label className='mx-2 my-3'>Input Customer Name: </label><input type='text' placeholder='Customer Name' value={customerName} onChange={(e) => setCustomerName(e.target.value)}/></span>
-              <span><label className='mx-2 my-3'>Input App Name: </label><input type='text' placeholder='App Name' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
+              <span><label className='mx-2 my-3'>Input Customer Name: </label><input required type='text' placeholder='Customer Name' value={customerName} onChange={(e) => setCustomerName(e.target.value)}/></span>
+              <span><label className='mx-2 my-3'>Input App Name: </label><input required type='text' placeholder='App Name' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
           </div>
           <button className='btn btn-primary mt-3' onClick={handleGenerateEmail}>{emailDraftDataStatus === "loading" ? <div class="spinner-border text-secondary" role="status" style={{height: "5px"}}>
   <span class="visually-hidden">Loading...</span>
