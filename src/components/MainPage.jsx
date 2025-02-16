@@ -55,7 +55,7 @@ const MainPage = () => {
           </select>
           </div>}
           </div>
-          <div className='d-flex mt-5 filterStyle'>
+          <div className='d-flex mt-3 filterStyle'>
               <span><label className='mx-2 my-3'>Input Customer Name: </label><input required type='text' placeholder='Customer Name' value={customerName} onChange={(e) => setCustomerName(e.target.value)}/></span>
               <span><label className='mx-2 my-3'>Input App Name: </label><input required type='text' placeholder='App Name' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
           </div>
