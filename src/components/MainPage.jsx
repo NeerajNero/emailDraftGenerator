@@ -60,7 +60,7 @@ const MainPage = () => {
               <span><label className='mx-2 my-3'>Input App Name: </label><input required type='text' placeholder='App Name' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
           </div>
           <button className='btn btn-primary mt-3' onClick={handleGenerateEmail}>{emailDraftDataStatus === "loading" ? <div class="spinner-border text-secondary" role="status" style={{height: "5px"}}>
-  <span class="visually-hidden">Loading...</span>
+  <span class="visually-hidden">Loading....</span>
 </div> : "Generate Email"}</button>
           <div className='my-5'>
             {}
