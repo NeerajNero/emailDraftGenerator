@@ -64,7 +64,7 @@ const MainPage = () => {
 </div> : "Generate Email"}</button>
           <div className='my-5'>
             {}
-            {emailDraftDataStatus === "loading" ? <Loader /> : emailDraftData && <div><h4>Generated Email: </h4><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p><h4>Suggested Note</h4><p>{emailDraftData.suggestedNotes}</p></div>}
+            {emailDraftDataStatus === "loading" ? <Loader /> : emailDraftData && <div><h4>Generated Email: </h4><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p><h4>Suggested Note:</h4><p>{emailDraftData.suggestedNotes}</p></div>}
           </div>
     </main>
   )
