@@ -32,7 +32,7 @@ const MainPage = () => {
   }
   return (
     <main className='container mt-3'>
-      <h3>Filter.</h3>
+      <h3>Filter</h3>
       <div className='d-flex filterStyle'>
       <div className='my-3 me-3'>
         <select onChange={handleDisplaySubSection}>
