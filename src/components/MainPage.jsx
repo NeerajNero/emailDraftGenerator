@@ -3,6 +3,17 @@ import subIssueData from '../emailData/emailData'
 import {useDispatch, useSelector} from 'react-redux'
 import { generateEmailDraft } from '../slices/emailDraftSlice'
 import Loader from './Loader'
+
+
+const toTitleCase = (str) => {
+  return str
+    .toLowerCase()
+    .split(' ')
+    .filter(word => word.trim() !== '') 
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
 const MainPage = () => {
   const [subSection, setSubSection] = useState([])
   const [selectedSection, setSelectedSection] = useState("")
@@ -13,6 +24,12 @@ const MainPage = () => {
   const emailDraftData = useSelector((state) => state?.emailDraft?.emailDraft)
   const emailDraftDataStatus = useSelector((state) => state?.emailDraft?.status)
   const dispatch = useDispatch()
+
+  const handleChange = (e) => {
+    const raw = e.target.value;
+    const titleCased = toTitleCase(raw);
+    setCustomerName(titleCased);
+  };
   
   const handleDisplaySubSection = (e) => {
     setSubSection([])
@@ -56,11 +73,11 @@ const MainPage = () => {
           </div>}
           </div>
           <div className='d-flex mt-3 filterStyle'>
-              <span><label className='mx-2 my-3'>Customer Name: </label><input required type='text' placeholder='Customer Name' value={customerName} onChange={(e) => setCustomerName(e.target.value)}/></span>
+              <span><label className='mx-2 my-3'>Customer Name: </label><input required type='text' placeholder='Customer Name' value={customerName} onChange={handleChange}/></span>
               <span><label className='mx-2 my-3'>App Name: </label><input required type='text' placeholder='App Name' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
           </div>
-          <button className='btn btn-primary mt-3' onClick={handleGenerateEmail}>{emailDraftDataStatus === "loading" ? <div class="spinner-border text-secondary" role="status" style={{height: "5px"}}>
-  <span class="visually-hidden">Loading....</span>
+          <button className='btn btn-primary mt-3' onClick={handleGenerateEmail}>{emailDraftDataStatus === "loading" ? <div className="spinner-border text-secondary" role="status" style={{height: "5px"}}>
+  <span className="visually-hidden">Loading....</span>
 </div> : "Generate Email"}</button>
           <div className='my-5'>
             {}
