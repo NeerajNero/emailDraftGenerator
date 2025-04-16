@@ -10,7 +10,6 @@ const initialState = {
 
 export const getAppDataByPlatform = createAsyncThunk('/AppData', async({platform}) => {
     const response = await axios.get(`https://email-draft-generator-backend.vercel.app/apps/getAppData/${platform}`)
-    console.log(response.data)
     return response.data
 })
 
