@@ -52,7 +52,7 @@ const MainPage = () => {
       <h3>Filter</h3>
       <div className='d-flex filterStyle'>
       <div className='my-3 me-3'>
-        <select onChange={handleDisplaySubSection}>
+        <select onChange={handleDisplaySubSection} className='form-select'>
           <option value="" autoFocus>Select Issue</option>
           <option value="Disbursement issues">Disbursement issues</option>
           <option value="Repayment issue">Repayment issue</option>
@@ -67,19 +67,19 @@ const MainPage = () => {
         </select>
         </div>
         {subSection.length > 0 && <div className='mx-3 my-3'>
-          <select onChange={(e) => setSubSelectedSection(e.target.value)} defaultValue={subSection[0]}>
+          <select onChange={(e) => setSubSelectedSection(e.target.value)} defaultValue={subSection[0]} className='form-select'>
             {subSection.map((sub,i) => <option key={i} value={sub}>{sub}</option>)}
           </select>
           </div>}
           </div>
-          <div className='d-flex mt-3 filterStyle'>
-              <span><label className='mx-2 my-3'>Customer Name: </label><input required type='text' placeholder='Customer Name' value={customerName} onChange={handleChange}/></span>
-              <span><label className='mx-2 my-3'>App Name: </label><input required type='text' placeholder='App Name' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
+          <div className='d-flex gap-3 mt-3 filterStyle'>
+              <span><input className='form-control' required type='text' placeholder='Customer Name' value={customerName} onChange={handleChange}/></span>
+              <span><input className='form-control' required type='text' placeholder='App Name' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
           </div>
           <button className='btn btn-primary mt-3' onClick={handleGenerateEmail}>{emailDraftDataStatus === "loading" ? <div className="spinner-border text-secondary" role="status" style={{height: "5px"}}>
   <span className="visually-hidden">Loading....</span>
 </div> : "Generate Email"}</button>
-          <div className='my-5'>
+          <div className='my-3'>
             {}
             {emailDraftDataStatus === "loading" ? <Loader /> : emailDraftData && <div><h4>Generated Email: </h4><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p><h4>Suggested Note:</h4><p>{emailDraftData.suggestedNotes}</p></div>}
           </div>
