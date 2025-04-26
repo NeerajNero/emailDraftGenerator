@@ -30,7 +30,7 @@ const subIssueData = [
     {
       "Loan related": ["Credit limit","High processing charges /less amount","Tenure","Increase tenure to 30 days",
         "How to apply","Loan rejected","Reason for rejection","Charges for every loan","Charges are high","How to use coupon",
-      "Contact customer support","Proper documents"]
+      "Contact customer support","Proper documents","Processing charges for Hopefund"]
     },
     {
       "Approved time": ["Approved time","Asking med proof","Asking death certificate","Financial draft"]
