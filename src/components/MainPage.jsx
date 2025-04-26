@@ -67,7 +67,7 @@ const MainPage = () => {
         </select>
         </div>
         {subSection.length > 0 && <div className='mx-3 my-3'>
-          <select onChange={(e) => setSubSelectedSection(e.target.value)}>
+          <select onChange={(e) => setSubSelectedSection(e.target.value)} defaultValue={subSection[0]}>
             {subSection.map((sub,i) => <option key={i} value={sub}>{sub}</option>)}
           </select>
           </div>}
