@@ -89,7 +89,7 @@ const MainPage = () => {
           </div>
           <div className='my-3'>
             {}
-            {emailDraftDataStatus === "loading" ? <Loader /> : emailDraftData && <div className='list-group col-md-10'><div className='list-group-item'><h4>Generated Email </h4><hr/><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p></div><div className='list-group'><div className='list-group-item'><h4 className='mt-3'>Suggested Note:</h4><p>{emailDraftData.suggestedNotes} {"   "}<button onClick={() => handleCopySuggestedNotes(emailDraftData.suggestedNotes)} className='btn btn-secondary'>Copy</button> {copied && "Copied!"}</p></div></div></div>}
+            {emailDraftDataStatus === "loading" ? <Loader /> : emailDraftData && <div className='list-group col-md-10'><div className='list-group-item'><h4>Generated Email </h4><hr/><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p></div><div className='list-group'><div className='list-group-item'><h4>Suggested Note</h4><hr/><p>{emailDraftData.suggestedNotes} {"   "}<button onClick={() => handleCopySuggestedNotes(emailDraftData.suggestedNotes)} className='btn btn-secondary'>Copy</button> {copied && "Copied!"}</p></div></div></div>}
           </div>
     </main>
   )
