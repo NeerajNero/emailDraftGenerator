@@ -83,13 +83,13 @@ const MainPage = () => {
           <div className='d-flex gap-3 mt-3 filterStyle'>
               <span><input className='form-control' required type='text' placeholder='Customer Name' value={customerName} onChange={handleChange}/></span>
               <span><input className='form-control' required type='text' placeholder='App Name' value={appName} onChange={(e) => setAppName(e.target.value)}/></span>
-          </div>
-          <button className='btn btn-primary mt-3' onClick={handleGenerateEmail}>{emailDraftDataStatus === "loading" ? <div className="spinner-border text-secondary" role="status" style={{height: "5px"}}>
+              <button className='btn btn-primary' onClick={handleGenerateEmail}>{emailDraftDataStatus === "loading" ? <div className="spinner-border text-secondary" role="status" style={{height: "5px"}}>
   <span className="visually-hidden">Loading....</span>
 </div> : "Generate Email"}</button>
+          </div>
           <div className='my-3'>
             {}
-            {emailDraftDataStatus === "loading" ? <Loader /> : emailDraftData && <div><h4>Generated Email: </h4><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p><h4>Suggested Note:</h4><p>{emailDraftData.suggestedNotes} {"   "}<button onClick={() => handleCopySuggestedNotes(emailDraftData.suggestedNotes)} className='btn btn-secondary'>Copy</button> {copied && "Copied!"}</p></div>}
+            {emailDraftDataStatus === "loading" ? <Loader /> : emailDraftData && <div className='list-group col-md-10'><div className='list-group-item'><h4>Generated Email </h4><hr/><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p></div><div className='list-group'><div className='list-group-item'><h4 className='mt-3'>Suggested Note:</h4><p>{emailDraftData.suggestedNotes} {"   "}<button onClick={() => handleCopySuggestedNotes(emailDraftData.suggestedNotes)} className='btn btn-secondary'>Copy</button> {copied && "Copied!"}</p></div></div></div>}
           </div>
     </main>
   )
