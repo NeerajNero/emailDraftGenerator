@@ -20,6 +20,7 @@ const MainPage = () => {
   const [selectedSubSection, setSubSelectedSection] = useState("")
   const [customerName, setCustomerName] = useState("")
   const [appName, setAppName] = useState("")
+  const [copied, setCopied] = useState(false)
 
   const emailDraftData = useSelector((state) => state?.emailDraft?.emailDraft)
   const emailDraftDataStatus = useSelector((state) => state?.emailDraft?.status)
@@ -46,6 +47,13 @@ const MainPage = () => {
       return 
     }
     dispatch(generateEmailDraft({emailSectionName: selectedSection, emailSubSectionName: selectedSubSection, customerName, appName}))
+  }
+
+  const handleCopySuggestedNotes = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }).catch((error) => console.log("failed to copy!", error.message))
   }
   return (
     <main className='container mt-3'>
@@ -81,7 +89,7 @@ const MainPage = () => {
 </div> : "Generate Email"}</button>
           <div className='my-3'>
             {}
-            {emailDraftDataStatus === "loading" ? <Loader /> : emailDraftData && <div><h4>Generated Email: </h4><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p><h4>Suggested Note:</h4><p>{emailDraftData.suggestedNotes}</p></div>}
+            {emailDraftDataStatus === "loading" ? <Loader /> : emailDraftData && <div><h4>Generated Email: </h4><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p><h4>Suggested Note:</h4><p>{emailDraftData.suggestedNotes} {"   "}<button onClick={() => handleCopySuggestedNotes(emailDraftData.suggestedNotes)} className='btn btn-secondary'>Copy</button> {copied && "Copied!"}</p></div>}
           </div>
     </main>
   )
