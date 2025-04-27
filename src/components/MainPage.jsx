@@ -3,6 +3,8 @@ import subIssueData from '../emailData/emailData'
 import {useDispatch, useSelector} from 'react-redux'
 import { generateEmailDraft } from '../slices/emailDraftSlice'
 import Loader from './Loader'
+import EmailSkeletonLoader from './EmailSkeletonLoader'
+import NewSkeletonLoader from './NewSkeletonLoader'
 
 
 const toTitleCase = (str) => {
@@ -106,7 +108,7 @@ const MainPage = () => {
           </div>
           <div className='my-2'>
             {}
-            {emailDraftDataStatus === "loading" ? <Loader /> : emailDraftData && <div className='list-group col-md-10'><div className='list-group-item'><div className='d-flex gap-3 align-items-center'><h4 className='mt-2'>Generated Email </h4><button onClick={handleCopyEmail} className='btn btn-secondary'>Copy</button> {copiedEmail && "Copied!"}</div><hr/><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p></div><div className='list-group'><div className='list-group-item'><div className='d-flex gap-3 align-items-center'><h4 className='mt-2'>Suggested Note</h4><button onClick={() => handleCopySuggestedNotes(emailDraftData?.suggestedNotes)} className='btn btn-secondary'>Copy</button> {copied && "Copied!"}</div><hr/><p>{emailDraftData.suggestedNotes}</p></div></div></div>}
+            {emailDraftDataStatus === "loading" ? <NewSkeletonLoader /> : emailDraftData && <div className='list-group col-md-10'><div className='list-group-item'><div className='d-flex gap-3 align-items-center'><h4 className='mt-2'>Generated Email </h4><button onClick={handleCopyEmail} className='btn btn-secondary'>Copy</button> {copiedEmail && "Copied!"}</div><hr/><p dangerouslySetInnerHTML={{ __html: emailDraftData.emailBody}}></p></div><div className='list-group'><div className='list-group-item'><div className='d-flex gap-3 align-items-center'><h4 className='mt-2'>Suggested Note</h4><button onClick={() => handleCopySuggestedNotes(emailDraftData?.suggestedNotes)} className='btn btn-secondary'>Copy</button> {copied && "Copied!"}</div><hr/><p>{emailDraftData.suggestedNotes}</p></div></div></div>}
           </div>
     </main>
   )
