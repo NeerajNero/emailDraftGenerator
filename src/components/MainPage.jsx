@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import subIssueData from '../emailData/emailData'
 import {useDispatch, useSelector} from 'react-redux'
 import { generateEmailDraft } from '../slices/emailDraftSlice'
-import Loader from './Loader'
-import EmailSkeletonLoader from './EmailSkeletonLoader'
 import NewSkeletonLoader from './NewSkeletonLoader'
 
 
