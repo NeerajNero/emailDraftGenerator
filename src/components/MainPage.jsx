@@ -89,6 +89,7 @@ const MainPage = () => {
           <option value="Loan related">Loan related</option>
           <option value="Approved time">Approved time</option>
           <option value="Harassment /fraud">Harassment /fraud</option>
+          <option value="On-Hold Tickets">On-Hold Tickets</option>
         </select>
         </div>
         {subSection.length > 0 && <div className='mx-3 mt-2'>

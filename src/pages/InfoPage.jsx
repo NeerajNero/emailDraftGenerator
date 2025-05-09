@@ -61,8 +61,8 @@ const InfoPage = () => {
                 </div>
                 </div>
             </div>
-            {selectedAppData && <div className="card">
-                <div className="card-body">
+            {selectedAppData && <div className="card col-md-6">
+                <div className="card-body d-flex flex-column">
                 {selectedAppData ? <><p>App: {selectedAppData.appName}</p> <p>App Link: {selectedAppData.appLink}</p> <p>App Email: {selectedAppData.appMailId}</p></> : ""}
                 </div>
             </div>}
