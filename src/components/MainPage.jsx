@@ -54,7 +54,7 @@ const MainPage = () => {
     navigator.clipboard.writeText(text).then(() => {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
-    }).catch((error) => console.log("failed to copy!!", error.message))
+    }).catch((error) => console.log("failed to copy!", error.message))
   }
 
   const handleCopyEmail = () => {
