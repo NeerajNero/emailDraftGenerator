@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Navbar from './components/Navbar';
 import MainPage from './components/MainPage';
 import InfoPage from './pages/InfoPage';
+import OnholdTicketsNotes from './pages/OnholdTicketsNotes';
 function App() {
   
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage />}/>
         <Route path='/Apps' element={<InfoPage />}/>
+        <Route path='/onhold-notes' element={<OnholdTicketsNotes />} />
       </Routes>
     </Router>
     </>
