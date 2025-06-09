@@ -10,6 +10,7 @@ const Navbar = () => {
         <div className='d-flex gap-3'>
         <Link to='/Apps' className='btn btn-primary'>App Links & Mail Ids</Link>
         <Link to='/onhold-notes' className='btn btn-primary'>On-Hold Tickets Notes</Link>
+        <Link to='/Gform' className='btn btn-primary'>Gform</Link> 
         </div>
         </div>
     </div>
